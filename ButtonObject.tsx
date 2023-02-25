@@ -1,5 +1,5 @@
 import Config from "../Config";
-import ImageObject from "./ImageObject";
+import ImageObject from "./";
 
 const DEBUG = Config.DEBUG;
 
