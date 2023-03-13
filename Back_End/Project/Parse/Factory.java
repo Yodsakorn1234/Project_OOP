@@ -1,5 +1,6 @@
 package Project.parseEvaluator;
 import Back_End.Project.Parse.Node.*;
+import Back_End.Project.Parse.SyntaxError;
 
 import java.util.*;
 public class Factory {
@@ -39,7 +40,7 @@ public class Factory {
     }
 
     // create a new Direction
-    public DirectionNode createDirection(String direction) throws SyntaxError{
+    public DirectionNode createDirection(String direction) throws SyntaxError {
         return new DirectionNode(direction);
     }
 
