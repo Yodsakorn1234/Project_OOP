@@ -1,7 +1,7 @@
 # Project_OOP
 ----------------------------------------------------------------------------------------------------
 
-## City Life project 
+## UPBEAT project 
 
 ----------------------------------------------------------------------------------------------------
 
@@ -12,8 +12,16 @@
  --------------------------------------------------------------------------------------------------  
 #### Member in team
 
--Pongtanate Namsawat 630612106
+- Pongtanate Namsawat 630612106
 
--Yodsakorn Likitrungson 630612109
+- Yodsakorn Likitrungson 630612109
 
--Wisarut Sada  630612110
+- Wisarut Sada  630612110
+
+Application Use in Project
+
+- Figma
+- IntelliJ IDEA
+- Visual Studio Code 
+- Spring Famework
+- Java
