@@ -1,10 +1,12 @@
 package Back_End.Project.Parse;
-import Project.Nodes.*;
-import Project.Nodes.Node.*;
-import Project.Tokenizer.Tokenizer;
-import java.util.*;
 
-public class ProcessParse  implements Parser{
+import Back_End.Project.Statement.*;
+import Back_End.Project.Tokenizer.Tokenizer;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class ProcessParse implements Parser{
     protected final Tokenizer tkz;
     // List string of commands
     private final List<String> commands = Arrays.stream(
