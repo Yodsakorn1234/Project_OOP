@@ -1,4 +1,10 @@
 package Back_End.Project.Statement;
 
-public class DirectionNode {
+public enum DirectionNode {
+    up,
+    upright,
+    upleft,
+    down,
+    downright,
+    downleft
 }

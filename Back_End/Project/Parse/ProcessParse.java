@@ -25,8 +25,8 @@ public class ProcessParse implements Parser{
     }
 
     @Override
-    public List<ExecuteNode> parse(){
-        List<ExecuteNode> doState = parsePlan();
+    public List<Node.ExecuteNode> parse(){
+        List<Node.ExecuteNode> doState = parsePlan();
 
         if(tkz.hasNextToken()){
             throw new NodeException.LeftoverToken(tkz.peek());
@@ -35,21 +35,21 @@ public class ProcessParse implements Parser{
     }
 
     // Plan → Statement+
-    private List<ExecuteNode> parsePlan(){
-        List<ExecuteNode> plan = new ArrayList<>();
+    private List<Node.ExecuteNode> parsePlan(){
+        List<Node.ExecuteNode> plan = new ArrayList<>();
         plan.add(parseStatement());
         parseStatements(plan);
         return plan;
     }
 
     // Statement → Command | BlockStatement | IfStatement | WhileStatement
-    public void parseStatements(List<ExecuteNode> statements){
+    public void parseStatements(List<Node.ExecuteNode> statements){
         while(!tkz.peek("}") && tkz.hasNextToken()){
             statements.add(parseStatement());
         }
     }
 
-    protected ExecuteNode parseStatement(){
+    protected Node.ExecuteNode parseStatement(){
         if(tkz.peek("if")){
             return parseIfStatement();
         }else if(tkz.peek("while")){
@@ -61,37 +61,37 @@ public class ProcessParse implements Parser{
         }
     }
 
-    private ExecuteNode parseBlockStatement(){
-        List<ExecuteNode> statements = new ArrayList<>();
+    private Node.ExecuteNode parseBlockStatement(){
+        List<Node.ExecuteNode> statements = new ArrayList<>();
         tkz.consume("{");
         parseStatements(statements);
         tkz.consume("}");
         return new BlockStatementNode(statements);
     }
 
-    private ExecuteNode parseWhileStatement(){
+    private Node.ExecuteNode parseWhileStatement(){
         tkz.consume("while");
         tkz.consume("(");
-        ExpressionNode expressionNode = parseExpression();
+        Node.ExpressionNode expressionNode = parseExpression();
         tkz.consume(")");
-        ExecuteNode statements = parseStatement();
+        Node.ExecuteNode statements = parseStatement();
         return new WhileStatementNode(expressionNode, statements);
     }
 
-    private ExecuteNode parseIfStatement(){
+    private Node.ExecuteNode parseIfStatement(){
         tkz.consume("if");
         tkz.consume("(");
-        ExpressionNode expressionNode = parseExpression();
+        Node.ExpressionNode expressionNode = parseExpression();
         tkz.consume(")");
         tkz.consume("then");
-        ExecuteNode trueStatement = parseStatement();
+        Node.ExecuteNode trueStatement = parseStatement();
         tkz.consume("else");
-        ExecuteNode falseStatement = parseStatement();
+        Node.ExecuteNode falseStatement = parseStatement();
         return new IfStatementNode(expressionNode, trueStatement, falseStatement);
     }
 
 
-    private ExecuteNode parseCommand(){
+    private Node.ExecuteNode parseCommand(){
         if(commands.contains(tkz.peek())){
             return parseActionCommand();
         }else{
@@ -100,7 +100,7 @@ public class ProcessParse implements Parser{
     }
 
     // AssignmentStatement → <identifier> = Expression
-    private ExecuteNode parseAssignmentStatement(){
+    private Node.ExecuteNode parseAssignmentStatement(){
         String identifier = parseIdentifier();
 
         if(tkz.peek("=")){
@@ -108,7 +108,7 @@ public class ProcessParse implements Parser{
         }else{
             throw new SyntaxError.Command404(identifier, tkz.getNewline());
         }
-        ExpressionNode expressionNode = parseExpression();
+        Node.ExpressionNode expressionNode = parseExpression();
         return new AssignmentStatementNode(identifier, expressionNode);
     }
 
@@ -121,7 +121,7 @@ public class ProcessParse implements Parser{
     }
 
     // ActionCommand → DoneCommand | RelocateCommand | MoveCommand | RegionCommand | AttackCommand
-    private ExecuteNode parseActionCommand() throws SyntaxError{
+    private Node.ExecuteNode parseActionCommand() throws SyntaxError{
         String command = tkz.consume();
 
         if(command.matches(RegularExpression.DONE_REGEX)){
@@ -142,27 +142,27 @@ public class ProcessParse implements Parser{
     }
 
     // MoveCommand → move Direction
-    private ExecuteNode parseMoveCommand(){
+    private Node.ExecuteNode parseMoveCommand(){
         DirectionNode direction = parseDirection();
         return new MoveCommand(direction);
     }
 
     // invest Expression
-    private ExecuteNode parseInvestCommand(){
-        ExpressionNode expressionNode = parseExpression();
+    private Node.ExecuteNode parseInvestCommand(){
+        Node.ExpressionNode expressionNode = parseExpression();
         return new InvestCommand(expressionNode);
     }
 
     // collect Expression
-    private ExecuteNode parseCollectCommand(){
-        ExpressionNode expressionNode = parseExpression();
+    private Node.ExecuteNode parseCollectCommand(){
+        Node.ExpressionNode expressionNode = parseExpression();
         return new CollectCommand(expressionNode);
     }
 
     // AttackCommand → shoot Direction Expression
-    private ExecuteNode parseShootCommand(){
+    private AttackCommand parseShootCommand(){
         DirectionNode direction = parseDirection();
-        ExpressionNode expressionNode = parseExpression();
+        Node.ExpressionNode expressionNode = parseExpression();
         return new AttackCommand(direction, expressionNode);
     }
 
@@ -188,43 +188,43 @@ public class ProcessParse implements Parser{
     }
 
     // Expression → Expression + Term | Expression - Term | Term
-    private ExpressionNode parseExpression(){
-        ExpressionNode left = parseTerm();
+    private Node.ExpressionNode parseExpression(){
+        Node.ExpressionNode left = parseTerm();
 
         while(tkz.peek("+") || tkz.peek("-")) {
             String op = tkz.consume();
-            ExpressionNode right = parseTerm();
+            Node.ExpressionNode right = parseTerm();
             left = new BinaryArithmeticNode(left, op, right);
         }
         return left;
     }
 
     // Term → Term * Factor | Term / Factor | Term % Factor | Factor
-    private ExpressionNode parseTerm(){
-        ExpressionNode left = parseFactory();
+    private Node.ExpressionNode parseTerm(){
+        Node.ExpressionNode left = parseFactory();
 
         while(tkz.peek("*") || tkz.peek("/") || tkz.peek("%")){
             String op = tkz.consume();
-            ExpressionNode right = parseFactory();
+            Node.ExpressionNode right = parseFactory();
             left = new BinaryArithmeticNode(left, op, right);
         }
         return left;
     }
 
     // Factor → Power ^ Factor | Power
-    private ExpressionNode parseFactory(){
-        ExpressionNode left = parsePower();
+    private Node.ExpressionNode parseFactory(){
+        Node.ExpressionNode left = parsePower();
 
         if(tkz.peek("^")){
             String op = tkz.consume();
-            ExpressionNode right = parseFactory();
+            Node.ExpressionNode right = parseFactory();
             left = new BinaryArithmeticNode(left, op, right);
         }
         return left;
     }
 
     // Power → <number> | <identifier> | ( Expression ) | InfoExpression
-    private ExpressionNode parsePower(){
+    private Node.ExpressionNode parsePower(){
         if(Character.isDigit(tkz.peek().charAt(0))){
             return new VariableExpressionNode(Integer.parseInt(tkz.consume()));
         }else if(tkz.peek(RegularExpression.OPPONENT_REGEX)
@@ -232,7 +232,7 @@ public class ProcessParse implements Parser{
             return parseInfoExpression();
         }else if(tkz.peek("(")){
             tkz.consume("(");
-            ExpressionNode expressionNode = parseExpression();
+            Node.ExpressionNode expressionNode = parseExpression();
             tkz.consume(")");
             return expressionNode;
         }
@@ -240,7 +240,7 @@ public class ProcessParse implements Parser{
     }
 
     // InfoExpression → opponent | nearby Direction
-    private ExpressionNode parseInfoExpression(){
+    private Node.ExpressionNode parseInfoExpression(){
         if(tkz.peek(RegularExpression.OPPONENT_REGEX)){
             tkz.consume();
             return new OpponentNode();

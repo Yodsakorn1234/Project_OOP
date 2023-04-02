@@ -1,4 +1,5 @@
 package Back_End.Project.Tokenizer;
+import org.junit.jupiter.api.Assertions;
 import org.testng.annotations.Test;
 
 public class TestTokenizer {

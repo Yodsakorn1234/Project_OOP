@@ -1,6 +1,5 @@
 package Back_End.Project.GameProcess;
 
-import Back_End.Project.Parse.ExecuteNode;
 import Back_End.Project.Parse.Parser;
 import Back_End.Project.Parse.ProcessParse;
 import Back_End.Project.Player.ConfigPlayer;
@@ -9,6 +8,7 @@ import Back_End.Project.Region.ConfigRegion;
 import Back_End.Project.Region.Position;
 import Back_End.Project.Region.Region;
 import Back_End.Project.Statement.AssignmentStatementNode;
+import Back_End.Project.Statement.Node;
 import Back_End.Project.Tokenizer.GrammarTokenizer;
 import Back_End.Project.Tokenizer.Tokenizer;
 
@@ -17,9 +17,9 @@ import java.util.*;
 public final class Unit {
     private static int id = 1;
 
-    private static Map<String, Long> evaluate(List<ExecuteNode> lists) {
+    private static Map<String, Long> evaluate(List<Node.ExecuteNode> lists) {
         Map<String, Long> bindings = new HashMap<>();
-        for(ExecuteNode list : lists){
+        for(Node.ExecuteNode list : lists){
             if(!(list instanceof AssignmentStatementNode)){
                 throw new GameException.InvalidConfiguration();
             }
@@ -34,8 +34,8 @@ public final class Unit {
         }
 
         @Override
-        public List<ExecuteNode> parse(){
-            List<ExecuteNode> defaultValue = new ArrayList<>(10);
+        public List<Node.ExecuteNode> parse(){
+            List<Node.ExecuteNode> defaultValue = new ArrayList<>(10);
             parseStatements(defaultValue);
             return defaultValue;
         }
@@ -43,7 +43,7 @@ public final class Unit {
 
     public static Configuration loadConfiguration(String config){
         Parser parser = new ConfigurationParse(new GrammarTokenizer(config));
-        List<ExecuteNode> lists = parser.parse();
+        List<Node.ExecuteNode> lists = parser.parse();
         Map<String, Long> bindings = evaluate(lists);
         Configuration configuration = new Configuration() {
             @Override
