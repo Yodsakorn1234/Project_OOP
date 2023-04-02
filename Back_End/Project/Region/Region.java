@@ -9,7 +9,7 @@ public interface Region {
 
     boolean isCityCenter();
 
-    Object getDeposit();
+    long getDeposit();
 
     void changeCityCenter();
     void updateOwner(Player owner);

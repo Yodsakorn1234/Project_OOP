@@ -1,11 +1,11 @@
 package Back_End.Project.GameProcess;
-import Back_End.Project.Player.Player;
-import Back_End.Project.Region.Position;
-import Back_End.Project.Region.Region;
-import Back_End.Project.Statement.DirectionNode;
 
-import java.io.File;
-import java.util.*;
+import Back_End.Project.Player.*;
+import Back_End.Project.Region.*;
+import Back_End.Project.Statement.*;
+
+import java.util.List;
+import java.util.Map;
 public interface Game {
     List<Region> getTerritory();
 

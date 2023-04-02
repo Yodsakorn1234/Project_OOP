@@ -1,22 +1,13 @@
 package Back_End.Project.GameProcess;
 
-import Back_End.Project.Player.Player;
-import Back_End.Project.Region.ConfigPosition;
-import Back_End.Project.Region.Position;
-import Back_End.Project.Region.Region;
 import Back_End.Project.Statement.DirectionNode;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.testng.annotations.Test;
+import Back_End.Project.Player.*;
+import Back_End.Project.Region.*;
+import org.junit.jupiter.api.*;
+import java.util.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import static org.testng.Assert.assertThrows;
-import static org.testng.AssertJUnit.*;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public final class GameTesting {
     private ConfigGame game;
@@ -64,7 +55,7 @@ public final class GameTesting {
             }
 
             @Override
-            public Object getDeposit() {
+            public long getDeposit() {
                 return deposit;
             }
 
@@ -383,7 +374,7 @@ public final class GameTesting {
         assertEquals(103, game.nearby(DirectionNode.downright));
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void testInterestPercentage(){
         Region playerAtRegion = territory.get(10);
         playerAtRegion.updateDeposit(1000);

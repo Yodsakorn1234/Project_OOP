@@ -1,19 +1,20 @@
 package Back_End.Project.Statement;
 
 import Back_End.Project.GameProcess.Game;
+import Back_End.Project.Statement.Node.ExecuteNode;
 
 import java.util.List;
 
-public class BlockStatementNode {
-    protected List<Node.ExecuteNode> statements;
+public class BlockStatementNode extends ExecuteNode {
+    protected List<ExecuteNode> statements;
 
-    public BlockStatementNode(List<Node.ExecuteNode> statements){
+    public BlockStatementNode(List<ExecuteNode> statements){
         this.statements = statements;
     }
 
     @Override
     public boolean execute(Game bindings) {
-        for(Node.ExecuteNode statement : statements){
+        for(ExecuteNode statement : statements){
             if(!statement.execute(bindings)){
                 return false;
             }

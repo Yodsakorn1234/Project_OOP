@@ -1,17 +1,12 @@
 package Back_End.Project.GameProcess;
 
-import Back_End.Project.Parse.Parser;
-import Back_End.Project.Parse.ProcessParse;
-import Back_End.Project.Player.ConfigPlayer;
-import Back_End.Project.Player.Player;
-import Back_End.Project.Region.ConfigRegion;
-import Back_End.Project.Region.Position;
-import Back_End.Project.Region.Region;
-import Back_End.Project.Statement.AssignmentStatementNode;
-import Back_End.Project.Statement.Node;
+import Back_End.Project.Statement.*;
+import Back_End.Project.Statement.Node.*;
+import Back_End.Project.Player.*;
+import Back_End.Project.Region.*;
 import Back_End.Project.Tokenizer.GrammarTokenizer;
 import Back_End.Project.Tokenizer.Tokenizer;
-
+import Back_End.Project.Parse.*;
 import java.util.*;
 
 public final class Unit {

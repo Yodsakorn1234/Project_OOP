@@ -1,6 +1,6 @@
 package Back_End.Project.Tokenizer;
 
-public class GrammarException {
+public class GrammarException extends RuntimeException{
     public GrammarException(String msg){
         super(msg);
     }

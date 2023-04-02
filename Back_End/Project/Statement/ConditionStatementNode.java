@@ -1,13 +1,14 @@
 package Back_End.Project.Statement;
 
 import Back_End.Project.GameProcess.Game;
+import Back_End.Project.Statement.Node.ExecuteNode;
 
-public abstract class ConditionStatementNode {
-    protected Node.ExpressionNode conditionNode;
-    protected Node.ExecuteNode trueStatement;
-    protected Node.ExecuteNode falseStatement;
+public abstract class ConditionStatementNode extends ExecuteNode{
+    protected ExpressionNode conditionNode;
+    protected ExecuteNode trueStatement;
+    protected ExecuteNode falseStatement;
 
-    public ConditionStatementNode(Node.ExpressionNode conditionNode, Node.ExecuteNode trueStatement, Node.ExecuteNode falseStatement){
+    public ConditionStatementNode(ExpressionNode conditionNode, ExecuteNode trueStatement, ExecuteNode falseStatement){
         this.conditionNode = conditionNode;
         this.trueStatement = trueStatement;
         this.falseStatement = falseStatement;

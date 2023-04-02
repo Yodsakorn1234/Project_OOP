@@ -5,7 +5,7 @@ import Back_End.Project.GameProcess.Game;
 public class WhileStatementNode extends ConditionStatementNode{
     protected int count = 0;
 
-    public WhileStatementNode(Node.ExpressionNode expressionNode, Node.ExecuteNode statementNode) {
+    public WhileStatementNode(ExpressionNode expressionNode, Node.ExecuteNode statementNode) {
         super(expressionNode, statementNode, null);
 
         if(trueStatement == null){

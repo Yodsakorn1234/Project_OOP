@@ -1,8 +1,9 @@
 package Back_End.Project.Statement;
 
 import Back_End.Project.GameProcess.Game;
+import Back_End.Project.Statement.Node.*;
 
-public class BinaryArithmeticNode extends Node.ExpressionNode {
+public class BinaryArithmeticNode extends ExpressionNode {
     protected ExpressionNode left, right;
     protected String op;
 

@@ -1,8 +1,9 @@
 package Back_End.Project.Statement;
 
 import Back_End.Project.GameProcess.Game;
+import Back_End.Project.Statement.Node.ExecuteNode;
 
-public class DoneCommand {
+public class DoneCommand extends ExecuteNode {
     public DoneCommand(){
     }
 

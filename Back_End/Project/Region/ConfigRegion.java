@@ -49,7 +49,7 @@ public class ConfigRegion implements Region{
     }
 
     @Override
-    public Object getDeposit() {
+    public long getDeposit() {
         return deposit;
     }
 

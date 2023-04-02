@@ -1,14 +1,8 @@
 package Back_End.Project.GameProcess;
 
-import Back_End.Project.Region.Position;
-import Back_End.Project.Region.Region;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import Back_End.Project.Region.*;
+import org.junit.jupiter.api.*;
+import java.util.*;
 
 public class UnitTesting {
     @Test
