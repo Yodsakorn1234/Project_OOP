@@ -1,4 +1,6 @@
 package Back_End.Project.Region;
 
-public class Position {
+public interface Position {
+    long getPosX();
+    long getPosY();
 }

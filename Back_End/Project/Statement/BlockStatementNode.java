@@ -1,4 +1,4 @@
-package Back_End.Project.Parse.Node;
+package Back_End.Project.Statement;
 
 public class BlockStatementNode {
 }

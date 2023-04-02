@@ -1,4 +1,4 @@
 package Back_End.Project.Parse;
 
-public class Tokenizer {
+public class TestProcessParse {
 }
