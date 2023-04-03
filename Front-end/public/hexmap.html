@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hexmap</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module">
+      import React from 'react';
+      import ReactDOM from 'react-dom';
+
+      async function loadHexmap() {
+        const { default: Hexmap } = await import('./App.js');
+        ReactDOM.render(<Hexmap />, document.getElementById('root'));
+      }
+
+      loadHexmap();
+    </script>
+  </body>
+</html>
