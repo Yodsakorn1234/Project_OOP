@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Game with Characters</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Game with Characters</h1>
+    <div id="game">
+      <style>
+        h1{
+          color: aliceblue;
+        }
+      body {
+        background-image: url("./image/background1.png");
+        background-size: cover;
+      }
+      </style>
+      <div id="player1">
+        <h2>Player 1</h2>
+        <div class="character" id="character1"><img src="./image/player1.png"></div>
+        <button style ="background-color: blue;" onclick="goBack()">Go Back</button>
+        <div id="player2">
+          <h2>Player 2</h2>
+          <div class="character" id="character2"><img src="./image/player2.png"></div>
+          <button style ="background-color: blue;" onclick="goBack()">Go Back</button>
+        <style>
+          h2{
+            color: red;
+          }
+        .button-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+          .button {
+          background-color: #008CBA;
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          margin: 0 10px;
+          align-items: center;
+        }
+        </style>
+      <script>
+          function goBack() {
+            window.history.back();
+          }
+      </script>
+      </div>
+    </div>
+  </body>
+</html>
