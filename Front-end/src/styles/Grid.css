@@ -1,0 +1,17 @@
+.grid-container {
+  height: 500px;
+  width: 800px;
+  overflow: scroll;
+  scroll-behavior: smooth; /* optional */
+  scroll-snap-type: x mandatory; /* optional */
+  scroll-snap-align: center; /* optional */
+  scroll-padding-left: 20px
+}
+.timer-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}

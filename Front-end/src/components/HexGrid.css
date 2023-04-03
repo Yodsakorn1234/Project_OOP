@@ -1,0 +1,30 @@
+.grid-container {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .hexagon-grid {
+    margin-right: 20px;
+  }
+  
+  .characters-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .character {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  .timer-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(245, 8, 8);
+  }
+  

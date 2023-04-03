@@ -1,0 +1,38 @@
+/* CSS for the buttons */
+.button {
+  margin: 0 10px;
+  padding: 50px 10px;
+  font-size: 32px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+body {
+  margin: 0;
+  font-family: 'Press Start 2P', cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* CSS for the How to Play popup */
+.how-to-play {
+  position: fixed;
+  top: 100%;
+  left: 100%;
+  transform: translate(-100%, -100%);
+  background-image: none;
+  border: 1px solid blueviolet;
+  padding: 30px;
+  display: none;
+}
+
+.game-rules {
+  position: fixed;
+  top: 100%;
+  left: 100%;
+  transform: translate(-100%, -100%);
+  background-image: none;
+  border: 1px solid blueviolet;
+  padding: 30px;
+  display: none;
+}
