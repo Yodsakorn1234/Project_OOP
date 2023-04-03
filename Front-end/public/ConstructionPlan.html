@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>UPBEAT Project</title>
+    <style>
+      head {
+        text-decoration: none;
+        color: red;
+        font-weight: bold;
+        text-align: center;
+        font-size: 48px;
+      }
+
+      button:hover {
+        color: rgb(0, 255, 0);
+
+      }
+      body {
+        background-image: url('./image/background3.jpg');
+        background-size: cover;
+      }
+    </style>
+    </head>
+    </style>
+  </head>
+  <body>
+    <h1>ConstructionPlan</h1>
+    <p>1.</p>
+    <p>2.</p>
+    <p>3.</p>
+    <p>4.</p>
+    <div class="button-container">
+      <button class="button" style ="background-color: rgb(17, 0, 255);" onclick="goBack()">Go Back</button>
+    </div>
+    <style>
+        h1 {
+          text-align: center;
+          font-size: 48px;
+          color: rgb(205, 50, 50);
+        }
+        p {
+          text-align: center;
+          font-size: 40px;
+          color: springgreen;
+        }
+        .button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+        .button {
+        background-color: #008CBA;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 0 auto;
+        align-items: center;
+      }
+      </style>
+    <script>
+        function goBack() {
+          window.history.back();
+        }
+    </script>
+  </body>
+</html>
